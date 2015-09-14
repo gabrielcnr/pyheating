@@ -37,6 +37,7 @@ def test_controller_add_trv(controller):
     controller.add_trv(TRV())
     assert 1 == len(controller.trv_units)
 
+
 def test_controller_remove_trv(controller):
     u1 = TRV()
     u2 = TRV()
@@ -47,6 +48,7 @@ def test_controller_remove_trv(controller):
     controller.remove_trv(u2)
     assert set([u1, u3]) == controller.trv_units
 
+
 def test_controller_cannot_add_the_same_trv_unit_twice(controller):
     unit = TRV()
     assert controller.trv_units == set()
@@ -54,7 +56,9 @@ def test_controller_cannot_add_the_same_trv_unit_twice(controller):
     controller.add_trv(unit)
     assert controller.trv_units == set([unit])
 
-def test_trv_without_name_gets_name_assigned_when_added_to_controller(controller):
+
+def test_trv_without_name_gets_name_assigned_when_added_to_controller(
+        controller):
     trv = TRV()
     assert trv.name is None
 
@@ -86,6 +90,7 @@ def test_controller_can_retrieve_a_trv_unit_by_its_name(controller):
 
     assert returned_trv_2 is trv_2
 
+
 def test_controller_does_not_mess_up_with_trv_sequence_ids(controller):
     trv_1 = TRV()
     trv_2 = TRV()
@@ -100,5 +105,3 @@ def test_controller_does_not_mess_up_with_trv_sequence_ids(controller):
     controller.add_trv(trv_3)
 
     assert trv_3.name == 'TRV #3'
-
-
